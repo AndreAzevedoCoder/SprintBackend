@@ -18,5 +18,6 @@ namespace senai.Filmes.WebApi.Interfaces
         List<GeneroDomain> Listar();
         void Adicionar(GeneroDomain novoGenero);
         void Delete(int id);
+        void Put(int id, GeneroDomain generoAtualizado);
     }
 }

@@ -117,6 +117,29 @@ namespace senai.Filmes.WebApi.Repositories
             }
         }
 
+        public void Put(int id, GeneroDomain generoAtualizado)
+        {
+            // Declara a SqlConnection passando a string de conexão
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                // Declara a instrução a ser executada
+                string query = "UPDATE Generos SET Nome = '"+generoAtualizado.Nome+"' WHERE IdGenero = "+id+"";
+
+                // Abre a conexão com o banco de dados
+                con.Open();
+
+
+
+                // Declara o SqlCommand passando o comando a ser executado e a conexão
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
+
 
     }
 }
