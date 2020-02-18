@@ -79,7 +79,7 @@ namespace senai.Filmes.WebApi.Repositories
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "SELECT * FROM Generos WHERE IdGenero = "+id+"";
+                string query = "SELECT * FROM Generos WHERE IdGenero = @id";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -89,10 +89,12 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+
                     rdr = cmd.ExecuteReader();
                     //cmd.ExecuteNonQuery();
                     while (rdr.Read())
                     {
+                        cmd.Parameters.AddWithValue("@id", id);
                         // Cria um objeto genero do tipo GeneroDomain
                         retorno.IdGenero = Convert.ToInt32(rdr[0]);
                         retorno.Nome = rdr["Nome"].ToString();
@@ -109,7 +111,7 @@ namespace senai.Filmes.WebApi.Repositories
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "INSERT INTO Generos	(Nome) VALUES('"+ novoGenero.Nome + "');";
+                string query = "INSERT INTO Generos	(Nome) VALUES('@Nome');";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -117,6 +119,7 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
                     //cmd.Parameters.AddWithValue("@Nome",genero.nome)
                     cmd.ExecuteNonQuery();
 
@@ -130,7 +133,7 @@ namespace senai.Filmes.WebApi.Repositories
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "DELETE Generos WHERE IdGenero="+id+";";
+                string query = "DELETE Generos WHERE IdGenero= @id ;";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -140,6 +143,7 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
 
@@ -153,7 +157,7 @@ namespace senai.Filmes.WebApi.Repositories
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "UPDATE Generos SET Nome = '"+generoAtualizado.Nome+"' WHERE IdGenero = "+id+"";
+                string query = "UPDATE Generos SET Nome = '@Nome' WHERE IdGenero = @id";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -163,7 +167,8 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-
+                    cmd.Parameters.AddWithValue("@Nome", generoAtualizado.Nome);
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
 
                 }
