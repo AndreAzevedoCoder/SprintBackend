@@ -72,6 +72,36 @@ namespace senai.Filmes.WebApi.Repositories
             return generos;
         }
 
+        public GeneroDomain RetornarPorID(int id)
+        {
+            GeneroDomain retorno = new GeneroDomain();
+            // Declara a SqlConnection passando a string de conexão
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                // Declara a instrução a ser executada
+                string query = "SELECT * FROM Generos WHERE IdGenero = "+id+"";
+
+                // Abre a conexão com o banco de dados
+                con.Open();
+
+                SqlDataReader rdr;
+
+                // Declara o SqlCommand passando o comando a ser executado e a conexão
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    rdr = cmd.ExecuteReader();
+                    //cmd.ExecuteNonQuery();
+                    while (rdr.Read())
+                    {
+                        // Cria um objeto genero do tipo GeneroDomain
+                        retorno.IdGenero = Convert.ToInt32(rdr[0]);
+                        retorno.Nome = rdr["Nome"].ToString();
+
+                    }
+                }
+            }
+            return retorno;
+        }
 
         public void Adicionar(GeneroDomain novoGenero)
         {
@@ -87,7 +117,7 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-
+                    //cmd.Parameters.AddWithValue("@Nome",genero.nome)
                     cmd.ExecuteNonQuery();
 
                 }

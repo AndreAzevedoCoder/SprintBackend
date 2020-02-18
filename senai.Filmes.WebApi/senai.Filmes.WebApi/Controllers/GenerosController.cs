@@ -49,6 +49,13 @@ namespace senai.Filmes.WebApi.Controllers
             return _generoRepository.Listar();
         }
 
+        [HttpGet("{id}")]
+        public GeneroDomain GetID(int id)
+        {
+            // Faz a chamada para o método .Listar();
+            return _generoRepository.RetornarPorID(id);
+        }
+
         [HttpPost]
         public IActionResult Post(GeneroDomain novoGenero) 
         {
@@ -72,5 +79,6 @@ namespace senai.Filmes.WebApi.Controllers
             _generoRepository.Put(ParamOne, generoAtualizado);
             return StatusCode(200);
         }
+
     }
 }
