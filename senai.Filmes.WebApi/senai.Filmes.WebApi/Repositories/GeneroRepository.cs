@@ -84,6 +84,27 @@ namespace senai.Filmes.WebApi.Repositories
                 // Abre a conexão com o banco de dados
                 con.Open();
 
+                // Declara o SqlCommand passando o comando a ser executado e a conexão
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            // Declara a SqlConnection passando a string de conexão
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                // Declara a instrução a ser executada
+                string query = "DELETE Generos WHERE IdGenero="+id+";";
+
+                // Abre a conexão com o banco de dados
+                con.Open();
+
 
 
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
