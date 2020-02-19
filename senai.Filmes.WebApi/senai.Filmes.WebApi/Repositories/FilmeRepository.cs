@@ -11,7 +11,7 @@ namespace senai.Filmes.WebApi.Repositories
     /// <summary>
     /// Repositório dos gêneros
     /// </summary>
-    public class GeneroRepository : IGeneroRepository
+    public class FilmeRepository : IFilmeRepository
     {
         /// <summary>
         /// String de conexão com o banco de dados que recebe os parâmetros
@@ -26,16 +26,16 @@ namespace senai.Filmes.WebApi.Repositories
         /// Lista todos os gêneros
         /// </summary>
         /// <returns>Retorna uma lista de gêneros</returns>
-        public List<GeneroDomain> Listar()
+        public List<FilmeDomain> Listar()
         {
             // Cria uma lista generos onde serão armazenados os dados
-            List<GeneroDomain> generos = new List<GeneroDomain>();
+            List<FilmeDomain> filmes = new List<FilmeDomain>();
 
             // Declara a SqlConnection passando a string de conexão
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "SELECT IdGenero, Nome from Generos";
+                string query = "EXEC MostarTodosOsFilmes";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -53,33 +53,31 @@ namespace senai.Filmes.WebApi.Repositories
                     while (rdr.Read())
                     {
                         // Cria um objeto genero do tipo GeneroDomain
-                        GeneroDomain genero = new GeneroDomain
+                        FilmeDomain filme = new FilmeDomain
                         {
-                            // Atribui à propriedade IdGenero o valor da primeira coluna da tabela do banco
-                            IdGenero = Convert.ToInt32(rdr[0]),
-
-                            // Atribui à propriedade Nome o valor da coluna "Nome" da tabela do banco
-                            Nome = rdr["Nome"].ToString()
+                            IdFilme = Convert.ToInt32(rdr["IdFilme"]),
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]),
+                            Titulo = rdr["Titulo"].ToString()
                         };
 
                         // Adiciona o genero criado à tabela generos
-                        generos.Add(genero);
+                        filmes.Add(filme);
                     }
                 }
             }
 
             // Retorna a lista de generos
-            return generos;
+            return filmes;
         }
 
-        public GeneroDomain RetornarPorID(int id)
+        public FilmeDomain RetornarPorID(int id)
         {
-            GeneroDomain retorno = new GeneroDomain();
+            FilmeDomain retorno = new FilmeDomain();
             // Declara a SqlConnection passando a string de conexão
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "SELECT * FROM Generos WHERE IdGenero = @id";
+                string query = "SELECT * FROM Filmes WHERE IdFilme = @id";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -96,8 +94,9 @@ namespace senai.Filmes.WebApi.Repositories
                     if (rdr.Read())
                     {
                         // Cria um objeto genero do tipo GeneroDomain
-                        retorno.IdGenero = Convert.ToInt32(rdr[0]);
-                        retorno.Nome = rdr["Nome"].ToString();
+                        retorno.IdFilme = Convert.ToInt32(rdr["IdFilme"]);
+                        retorno.IdGenero = Convert.ToInt32(rdr["IdGenero"]);
+                        retorno.Titulo = rdr["Titulo"].ToString();
                         return retorno;
                     }
                     else
@@ -108,24 +107,24 @@ namespace senai.Filmes.WebApi.Repositories
             }
         }
 
-        public void Adicionar(GeneroDomain novoGenero)
+        public void Adicionar(FilmeDomain novoFilme)
         {
             // Declara a SqlConnection passando a string de conexão
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "INSERT INTO Generos	(Nome) VALUES('@Nome');";
+                string query = "INSERT INTO Filmes(Titulo,IdGenero) VALUES(@Titulo, @Id)";
 
                 // Abre a conexão com o banco de dados
-                con.Open();
 
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
-                    //cmd.Parameters.AddWithValue("@Nome",genero.nome)
-                    cmd.ExecuteNonQuery();
+                    con.Open();
 
+                    cmd.Parameters.AddWithValue("@Titulo", novoFilme.Titulo);
+                    cmd.Parameters.AddWithValue("@Id", novoFilme.IdGenero);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
@@ -138,7 +137,7 @@ namespace senai.Filmes.WebApi.Repositories
                 using (SqlConnection con = new SqlConnection(StringConexao))
                 {
                     // Declara a instrução a ser executada
-                    string query = "EXEC deletarGenero @id";
+                    string query = "DELETE FROM Filmes WHERE IdFilme=@id;";
 
                     // Abre a conexão com o banco de dados
                     con.Open();
@@ -163,7 +162,7 @@ namespace senai.Filmes.WebApi.Repositories
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 // Declara a instrução a ser executada
-                string query = "UPDATE Generos SET Nome = '@Nome' WHERE IdGenero = @id";
+                string query = "UPDATE Filmes SET IdGenero = @Genero WHERE IdFilme = @id";
 
                 // Abre a conexão com o banco de dados
                 con.Open();
@@ -173,9 +172,10 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@Nome", generoAtualizado.Nome);
+                    cmd.Parameters.AddWithValue("@Genero", generoAtualizado.IdGenero);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
+
                 }
             }
         }

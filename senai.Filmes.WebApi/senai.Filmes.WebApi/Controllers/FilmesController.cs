@@ -22,19 +22,19 @@ namespace senai.Filmes.WebApi.Controllers
 
     // Define que é um controlador de API
     [ApiController]
-    public class GenerosController : ControllerBase
+    public class FilmesController : ControllerBase
     {
         /// <summary>
         /// Cria um objeto _generoRepository que irá receber todos os métodos definidos na interface
         /// </summary>
-        private IGeneroRepository _generoRepository { get; set; }
+        private IFilmeRepository _filmeRepository { get; set; }
 
         /// <summary>
         /// Instancia este objeto para que haja a referência aos métodos no repositório
         /// </summary>
-        public GenerosController()
+        public FilmesController()
         {
-            _generoRepository = new GeneroRepository();
+            _filmeRepository = new FilmeRepository();
         }
 
         /// <summary>
@@ -43,18 +43,18 @@ namespace senai.Filmes.WebApi.Controllers
         /// <returns>Retorna uma lista de gêneros</returns>
         /// dominio/api/Generos
         [HttpGet]
-        public IEnumerable<GeneroDomain> Get()
+        public IEnumerable<FilmeDomain> Get()
         {
             // Faz a chamada para o método .Listar();
-            return _generoRepository.Listar();
+            return _filmeRepository.Listar();
         }
 
         [HttpGet("{id}")]
         public IActionResult GetID(int id)
         {
             // Faz a chamada para o método .Listar();
-            GeneroDomain novoGenero = _generoRepository.RetornarPorID(id);
-            if(novoGenero == null)
+            FilmeDomain novoGenero = _filmeRepository.RetornarPorID(id);
+            if (novoGenero == null)
             {
                 return StatusCode(404);
             }
@@ -65,10 +65,9 @@ namespace senai.Filmes.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(GeneroDomain novoGenero) 
+        public IActionResult Post(FilmeDomain novoFilme)
         {
-            // Faz a chamada para o método .Listar();
-            _generoRepository.Adicionar(novoGenero);
+            _filmeRepository.Adicionar(novoFilme);
             return StatusCode(200);
         }
 
@@ -76,15 +75,15 @@ namespace senai.Filmes.WebApi.Controllers
         public IActionResult Delete(int ParamOne)
         {
             //int id = HttpContext.Current.Request.Url.AbsolutePath;
-            _generoRepository.Delete(ParamOne);
+            _filmeRepository.Delete(ParamOne);
             return StatusCode(200);
         }
 
-        [HttpPut("{ParamOne}")]
-        public IActionResult Put(int ParamOne,GeneroDomain generoAtualizado)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, FilmeDomain filmeAtualizado)
         {
             //int id = HttpContext.Current.Request.Url.AbsolutePath;
-            _generoRepository.Put(ParamOne, generoAtualizado);
+            _filmeRepository.Put(id, filmeAtualizado);
             return StatusCode(200);
         }
 
