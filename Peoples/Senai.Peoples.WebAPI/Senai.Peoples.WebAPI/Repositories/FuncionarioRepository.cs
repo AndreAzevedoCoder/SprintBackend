@@ -41,6 +41,7 @@ namespace Senai.Peoples.WebAPI.Repositories
                         funcionario.idFuncionario = Convert.ToInt32(rdr["idFuncionario"]);
                         funcionario.nome = rdr["Nome"].ToString();
                         funcionario.sobrenome = rdr["Sobrenome"].ToString();
+                        funcionario.dataDeNascimento = rdr["dataDeNascimento"].ToString();
 
                         funcionarios.Add(funcionario);
                     }
@@ -76,9 +77,12 @@ namespace Senai.Peoples.WebAPI.Repositories
                     // Enquanto houver registros para ler, o laço se repete
                     while (rdr.Read())
                     {
+
                         funcionario.idFuncionario = Convert.ToInt32(rdr["idFuncionario"]);
                         funcionario.nome = rdr["Nome"].ToString();
                         funcionario.sobrenome = rdr["Sobrenome"].ToString();
+                        funcionario.dataDeNascimento = rdr["dataDeNascimento"].ToString();
+
                     }
                 }
 
@@ -90,7 +94,7 @@ namespace Senai.Peoples.WebAPI.Repositories
         {
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                string query = "EXEC AdicionarFuncionario @Nome , @Sobrenome";
+                string query = "EXEC AdicionarFuncionario @Nome , @Sobrenome, @dataDeNascimento";
 
                 con.Open();
 
@@ -99,6 +103,7 @@ namespace Senai.Peoples.WebAPI.Repositories
 
                     cmd.Parameters.AddWithValue("@Nome", novoFuncionario.nome);
                     cmd.Parameters.AddWithValue("@Sobrenome", novoFuncionario.sobrenome);
+                    cmd.Parameters.AddWithValue("@dataDeNascimento", novoFuncionario.dataDeNascimento);
 
                     cmd.ExecuteNonQuery();
 
@@ -145,6 +150,11 @@ namespace Senai.Peoples.WebAPI.Repositories
                     query += "UPDATE Funcionarios SET Sobrenome = @sobrenome WHERE idFuncionario = @id;";
                 }
 
+                if (funcionarioAtualizado.dataDeNascimento != null)
+                {
+                    query += "UPDATE Funcionarios SET DataDeNascimento = @dataDeNascimento WHERE idFuncionario = @id;";
+                }
+
                 con.Open();
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
@@ -162,6 +172,10 @@ namespace Senai.Peoples.WebAPI.Repositories
                         cmd.Parameters.AddWithValue("@sobrenome", funcionarioAtualizado.sobrenome);
                     }
 
+                    if (funcionarioAtualizado.sobrenome != null)
+                    {
+                        cmd.Parameters.AddWithValue("@dataDeNascimento", funcionarioAtualizado.dataDeNascimento);
+                    }
 
                     cmd.ExecuteNonQuery();
 
