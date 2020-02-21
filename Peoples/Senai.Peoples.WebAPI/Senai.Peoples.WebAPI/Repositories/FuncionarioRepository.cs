@@ -85,5 +85,90 @@ namespace Senai.Peoples.WebAPI.Repositories
                 return funcionario;
             }
         }
+
+        public void Cadastrar(FuncionarioDomain novoFuncionario)
+        {
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string query = "EXEC AdicionarFuncionario @Nome , @Sobrenome";
+
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@Nome", novoFuncionario.nome);
+                    cmd.Parameters.AddWithValue("@Sobrenome", novoFuncionario.sobrenome);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+            }
+        }
+
+        public void Demitir(int id)
+        {
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string query = "EXEC DemitirFuncionario @id";
+
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+            }
+        }
+
+        public void Atualizar(int id, FuncionarioDomain funcionarioAtualizado)
+        {
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+
+                string query = "";
+
+                if(funcionarioAtualizado.nome != null)
+                {
+                    query += "UPDATE Funcionarios SET Nome = @nome WHERE idFuncionario = @id;";
+                }
+
+                if (funcionarioAtualizado.sobrenome != null)
+                {
+                    query += "UPDATE Funcionarios SET Sobrenome = @sobrenome WHERE idFuncionario = @id;";
+                }
+
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    if (funcionarioAtualizado.nome != null)
+                    {
+                        cmd.Parameters.AddWithValue("@nome", funcionarioAtualizado.nome);
+                    }
+
+                    if (funcionarioAtualizado.sobrenome != null)
+                    {
+                        cmd.Parameters.AddWithValue("@sobrenome", funcionarioAtualizado.sobrenome);
+                    }
+
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+            }
+        }
+
     }
 }
