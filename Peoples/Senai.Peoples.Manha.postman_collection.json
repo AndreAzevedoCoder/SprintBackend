@@ -150,6 +150,71 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Funcionario.BuscarNome (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Funcionarios/Buscar/Andr%C3%A9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Funcionarios",
+						"Buscar",
+						"Andr%C3%A9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Funcionario.ListarNomesCompletos (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Funcionarios/NomesCompletos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Funcionarios",
+						"NomesCompletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Funcionario.OrdenarASC (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Funcionarios/ordenacao/asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Funcionarios",
+						"ordenacao",
+						"asc"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
