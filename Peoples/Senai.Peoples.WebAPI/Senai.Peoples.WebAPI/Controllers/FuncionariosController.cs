@@ -48,10 +48,17 @@ namespace Senai.Peoples.WebAPI.Controllers
             return StatusCode(200, _funcionarioRepository.NomesCompletos());
         }
 
-        [HttpGet("ordenacao/ASC")]
-        public IActionResult OrdenarAsc()
+        [HttpGet("ordenacao/{ordem}")]
+        public IActionResult OrdenarAsc(string ordem)
         {
-            return StatusCode(200, _funcionarioRepository.OrdenarAsc());
+            if(ordem == "ASC")
+            {
+                return StatusCode(200, _funcionarioRepository.OrdenarAsc());
+            }
+            else
+            {
+                return StatusCode(400);
+            }
         }
 
         [HttpPost]
