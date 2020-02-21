@@ -184,5 +184,126 @@ namespace Senai.Peoples.WebAPI.Repositories
             }
         }
 
+        public FuncionarioDomain BuscarPorNome (string nome)
+        {
+            FuncionarioDomain funcionario = new FuncionarioDomain();
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                // Declara a instrução a ser executada
+                string query = "EXEC MostrarFuncionarioPorNome @Nome";
+
+                // Abre a conexão com o banco de dados
+                con.Open();
+
+                // Declara o SqlDataReader para percorrer a tabela do banco
+                SqlDataReader rdr;
+
+                // Declara o SqlCommand passando o comando a ser executado e a conexão
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", nome);
+                    // Executa a query
+                    rdr = cmd.ExecuteReader();
+
+                    // Enquanto houver registros para ler, o laço se repete
+                    while (rdr.Read())
+                    {
+
+                        funcionario.idFuncionario = Convert.ToInt32(rdr["idFuncionario"]);
+                        funcionario.nome = rdr["Nome"].ToString();
+                        funcionario.sobrenome = rdr["Sobrenome"].ToString();
+                        funcionario.dataDeNascimento = rdr["dataDeNascimento"].ToString();
+
+                    }
+                }
+
+                return funcionario;
+            }
+        }
+
+
+
+        public List<FuncionarioDomain> NomesCompletos()
+        {
+            List<FuncionarioDomain> funcionarios = new List<FuncionarioDomain>();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                // Declara a instrução a ser executada
+                string query = "EXEC MostarTodosOsFuncionarios";
+
+                // Abre a conexão com o banco de dados
+                con.Open();
+
+                // Declara o SqlDataReader para percorrer a tabela do banco
+                SqlDataReader rdr;
+
+                // Declara o SqlCommand passando o comando a ser executado e a conexão
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Executa a query
+                    rdr = cmd.ExecuteReader();
+
+                    // Enquanto houver registros para ler, o laço se repete
+                    while (rdr.Read())
+                    {
+                        // Cria um objeto genero do tipo GeneroDomain
+                        FuncionarioDomain funcionario = new FuncionarioDomain();
+
+                        funcionario.idFuncionario = Convert.ToInt32(rdr["idFuncionario"]);
+                        funcionario.nome = rdr["Nome"].ToString() +" "+ rdr["Sobrenome"].ToString();
+                        funcionario.dataDeNascimento = rdr["dataDeNascimento"].ToString();
+
+                        funcionarios.Add(funcionario);
+                    }
+                }
+            }
+
+            // Retorna a lista de generos
+            return funcionarios;
+        }
+
+
+        public List<FuncionarioDomain> OrdenarAsc()
+        {
+            List<FuncionarioDomain> funcionarios = new List<FuncionarioDomain>();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                // Declara a instrução a ser executada
+                string query = "EXEC OrdernarNomesASC";
+
+                // Abre a conexão com o banco de dados
+                con.Open();
+
+                // Declara o SqlDataReader para percorrer a tabela do banco
+                SqlDataReader rdr;
+
+                // Declara o SqlCommand passando o comando a ser executado e a conexão
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Executa a query
+                    rdr = cmd.ExecuteReader();
+
+                    // Enquanto houver registros para ler, o laço se repete
+                    while (rdr.Read())
+                    {
+                        // Cria um objeto genero do tipo GeneroDomain
+                        FuncionarioDomain funcionario = new FuncionarioDomain();
+
+                        funcionario.idFuncionario = Convert.ToInt32(rdr["idFuncionario"]);
+                        funcionario.nome = rdr["Nome"].ToString();
+                        funcionario.sobrenome = rdr["Sobrenome"].ToString();
+                        funcionario.dataDeNascimento = rdr["dataDeNascimento"].ToString();
+
+                        funcionarios.Add(funcionario);
+                    }
+                }
+            }
+
+            // Retorna a lista de generos
+            return funcionarios;
+        }
+
+
     }
 }

@@ -36,6 +36,24 @@ namespace Senai.Peoples.WebAPI.Controllers
             return StatusCode(200, _funcionarioRepository.BuscarPorId(id));
         }
 
+        [HttpGet("Buscar/{nome}")]
+        public IActionResult BuscarPorNome(string nome)
+        {
+            return StatusCode(200, _funcionarioRepository.BuscarPorNome(nome));
+        }
+
+        [HttpGet("NomesCompletos")]
+        public IActionResult NomesCompletos()
+        {
+            return StatusCode(200, _funcionarioRepository.NomesCompletos());
+        }
+
+        [HttpGet("ordenacao/ASC")]
+        public IActionResult OrdenarAsc()
+        {
+            return StatusCode(200, _funcionarioRepository.OrdenarAsc());
+        }
+
         [HttpPost]
         public IActionResult Cadastrar(FuncionarioDomain funcionario)
         {
