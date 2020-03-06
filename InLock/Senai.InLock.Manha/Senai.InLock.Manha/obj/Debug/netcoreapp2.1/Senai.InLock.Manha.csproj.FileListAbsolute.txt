@@ -12,3 +12,17 @@ C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.Manha\Senai.InLock.Manha
 C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.Manha\Senai.InLock.Manha\bin\Debug\netcoreapp2.1\Senai.InLock.Manha.pdb
 C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.dll
 C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.pdb
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.csprojAssemblyReference.cache
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.csproj.CoreCompileInputs.cache
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.RazorAssemblyInfo.cache
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.RazorAssemblyInfo.cs
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.AssemblyInfoInputs.cache
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.AssemblyInfo.cs
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.dll
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.pdb
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\bin\Debug\netcoreapp2.1\Senai.InLock.Manha.deps.json
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\bin\Debug\netcoreapp2.1\Senai.InLock.Manha.runtimeconfig.json
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\bin\Debug\netcoreapp2.1\Senai.InLock.Manha.runtimeconfig.dev.json
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\bin\Debug\netcoreapp2.1\Senai.InLock.Manha.dll
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\bin\Debug\netcoreapp2.1\Senai.InLock.Manha.pdb
+C:\Users\54094513841\Desktop\SprintBackend\InLock\Senai.InLock.Manha\Senai.InLock.Manha\obj\Debug\netcoreapp2.1\Senai.InLock.Manha.RazorTargetAssemblyInfo.cache

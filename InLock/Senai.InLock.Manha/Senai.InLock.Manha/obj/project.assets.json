@@ -12538,11 +12538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\54094513841\\Desktop\\SprintBackend\\Senai.InLock.Manha\\Senai.InLock.Manha\\Senai.InLock.Manha.csproj",
+      "projectUniqueName": "C:\\Users\\54094513841\\Desktop\\SprintBackend\\InLock\\Senai.InLock.Manha\\Senai.InLock.Manha\\Senai.InLock.Manha.csproj",
       "projectName": "Senai.InLock.Manha",
-      "projectPath": "C:\\Users\\54094513841\\Desktop\\SprintBackend\\Senai.InLock.Manha\\Senai.InLock.Manha\\Senai.InLock.Manha.csproj",
+      "projectPath": "C:\\Users\\54094513841\\Desktop\\SprintBackend\\InLock\\Senai.InLock.Manha\\Senai.InLock.Manha\\Senai.InLock.Manha.csproj",
       "packagesPath": "C:\\Users\\54094513841\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\54094513841\\Desktop\\SprintBackend\\Senai.InLock.Manha\\Senai.InLock.Manha\\obj\\",
+      "outputPath": "C:\\Users\\54094513841\\Desktop\\SprintBackend\\InLock\\Senai.InLock.Manha\\Senai.InLock.Manha\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
