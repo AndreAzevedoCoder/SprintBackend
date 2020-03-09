@@ -61,6 +61,7 @@ namespace Senai.InLock.Manha.Repositories
             {
                 jogo.IdEstudio = jogoAtualizado.IdEstudio;
             }
+
             ctx.SaveChanges();
         }
     }

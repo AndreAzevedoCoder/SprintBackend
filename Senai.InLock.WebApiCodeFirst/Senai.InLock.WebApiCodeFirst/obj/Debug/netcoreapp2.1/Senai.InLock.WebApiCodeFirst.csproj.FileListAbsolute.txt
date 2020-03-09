@@ -1,0 +1,11 @@
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\bin\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.deps.json
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\bin\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.runtimeconfig.json
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\bin\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.runtimeconfig.dev.json
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\bin\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.dll
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.csprojAssemblyReference.cache
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.csproj.CoreCompileInputs.cache
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.RazorAssemblyInfo.cache
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.RazorAssemblyInfo.cs
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.AssemblyInfoInputs.cache
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.AssemblyInfo.cs
+C:\Users\54094513841\Desktop\SprintBackend\Senai.InLock.WebApiCodeFirst\Senai.InLock.WebApiCodeFirst\obj\Debug\netcoreapp2.1\Senai.InLock.WebApiCodeFirst.RazorTargetAssemblyInfo.cache
